@@ -66,16 +66,6 @@ public:
 
 };
 
-class DLL_SPEC Entity
-{
-private:
-    std::string id;
-
-public:
-    Entity();
-    const std::string& getID() const;
-};
-
 
 /**
 *\brief Interface para aplicar operaciones a los objetos
@@ -89,6 +79,17 @@ public:
     *\param u es el vector unitario en el cual se realizara la rotacion.
     */
     virtual bool rotate(const Point& u) = 0;
+};
+
+
+class DLL_SPEC Entity
+{
+private:
+    std::string id;
+
+public:
+    Entity();
+    const std::string& getID() const;
 };
 
 
@@ -108,8 +109,6 @@ public:
     virtual bool move(const Vector& v);
     virtual bool rotate(const Point& u);
 };
-
-
 
 
 class Object : public Matter
@@ -134,8 +133,6 @@ public:
 };
 
 
-
-
 class World : public Object
 {
 
@@ -144,7 +141,6 @@ public:
     virtual bool move(const Vector& v);
     virtual bool rotate(const Point& u);
 };
-
 
 
 class Context
