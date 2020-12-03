@@ -111,34 +111,9 @@ namespace cobani::core
     bool Vector::normalize()
     {
         COBANI_TYPE_DECIMAL lenvect = length();
-        #ifdef DEBUG
-            std::cout << "X = " << direction[COBANI_PX] << "\n";
-        #endif // DEBUG
         direction[COBANI_PX] = ((direction[COBANI_PX]/lenvect) + origin[COBANI_PX]);
-        #ifdef DEBUG
-            std::cout << "lenvect = " << lenvect << "\n";
-            std::cout << "X = " << direction[COBANI_PX] << "\n";
-        #endif // DEBUG
-
-
-        #ifdef DEBUG
-            std::cout << "Y = " << direction[COBANI_PY] << "\n";
-        #endif // DEBUG
         direction[COBANI_PY] = ((direction[COBANI_PY]/lenvect) + origin[COBANI_PY]);
-        #ifdef DEBUG
-            std::cout << "lenvect = " << lenvect << "\n";
-            std::cout << "Y = " << direction[COBANI_PY] << "\n";
-        #endif // DEBUG
-
-
-        #ifdef DEBUG
-            std::cout << "Z = " << direction[COBANI_PZ] << "\n";
-        #endif // DEBUG
         direction[COBANI_PZ] = ((direction[COBANI_PZ]/lenvect) + origin[COBANI_PZ]);
-        #ifdef DEBUG
-            std::cout << "lenvect = " << lenvect << "\n";
-            std::cout << "X = " << direction[COBANI_PZ] << "\n";
-        #endif // DEBUG
 
         return true;
     }
