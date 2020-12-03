@@ -42,6 +42,9 @@ public:
     void setX(COBANI_TYPE_INT);
     void setY(COBANI_TYPE_INT);
     void setZ(COBANI_TYPE_INT);
+
+    //funtions
+    COBANI_TYPE_DECIMAL lengthTo(const Point&)const;
 };
 
 class DLL_SPEC Vector

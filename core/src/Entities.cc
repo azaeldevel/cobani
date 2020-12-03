@@ -1,4 +1,7 @@
 
+#include <math.h>
+
+
 #include "Entities.hh"
 
 namespace cobani::core
@@ -105,6 +108,10 @@ namespace cobani::core
     {
 
     }
+    COBANI_TYPE_DECIMAL Vector::length()const
+    {
+        return origin.lengthTo(direction);
+    }
 
 
 
@@ -115,8 +122,16 @@ namespace cobani::core
 
 
 
+    COBANI_TYPE_DECIMAL Point::lengthTo(const Point& to)const
+    {
+        COBANI_TYPE_DECIMAL lengx = (at(COBANI_PX) - to[COBANI_PX]);
+        COBANI_TYPE_DECIMAL lengy = (at(COBANI_PY) - to[COBANI_PY]);
+        COBANI_TYPE_DECIMAL lengz = (at(COBANI_PZ) - to[COBANI_PZ]);
 
-
+        COBANI_TYPE_DECIMAL leng = pow(lengx,2) + pow(lengy,2) + pow(lengz,2);
+        leng = sqrt(leng);
+        return leng;
+    }
     /**
     **      Point
     **/
