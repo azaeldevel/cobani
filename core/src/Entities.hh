@@ -3,7 +3,7 @@
 
 #if defined BUILDING_DLL && WINDOWS_MINGW
     #define DLL_SPEC __declspec(dllexport)
-#elif WINDOWS_MINGW
+#elif WINDOWS_MINGW && !TESTING
     #define DLL_SPEC __declspec(dllimport)
 #else
     #define DLL_SPEC
@@ -13,37 +13,75 @@
 #define COBANI_TYPE_INTEGER long
 #define COBANI_TYPE_DECIMAL double
 
-
+#define COBANI_EPSILON 1.0e-4
 #define COBANI_PX 0
 #define COBANI_PY 1
 #define COBANI_PZ 2
-#define COBANI_DIMENSION 3
+#define COBANI_DIMENSION 2
 
+
+#include <math.h>
 #include <string>
 #include <vector>
+#include <map>
+#include <exception>
+
 
 namespace cobani::core
 {
 
+class Exception : public std::exception
+{
+private:
+    int line;
+    const char* filename;
+    std::string message;
+public:
+    Exception(const char* fn,int line, const std::string& msg);
+    virtual const char* what () const throw ();
+};
+
+
 class DLL_SPEC Point : public std::vector<COBANI_TYPE_DECIMAL>
 {
 public:
+    static Point O;
+
+public:
     //constructores
     Point();
-
+    Point(const Point&);
+    #if COBANI_DIMENSION >= 2
+    Point(COBANI_TYPE_DECIMAL x,COBANI_TYPE_DECIMAL y);
+    #endif
+    #if COBANI_DIMENSION >= 2
+    Point(COBANI_TYPE_DECIMAL x,COBANI_TYPE_DECIMAL y, COBANI_TYPE_DECIMAL z);
+    #endif
     //operadores
+    operator std::string() const;
+    const Point& operator =(const Point&);
+    const Point& operator +(const Point&);
 
     //getters
     COBANI_TYPE_DECIMAL getX()const;
+    #if COBANI_DIMENSION >= 2
     COBANI_TYPE_DECIMAL getY()const;
+    #endif
+    #if COBANI_DIMENSION >= 3
     COBANI_TYPE_DECIMAL getZ()const;
+    #endif
     //setter
     void setX(COBANI_TYPE_DECIMAL);
+    #if COBANI_DIMENSION >= 2
     void setY(COBANI_TYPE_DECIMAL);
+    #endif
+    #if COBANI_DIMENSION >= 3
     void setZ(COBANI_TYPE_DECIMAL);
+    #endif
 
     //funtions
     COBANI_TYPE_DECIMAL lengthTo(const Point&)const;
+    bool normalize();
 };
 
 class DLL_SPEC Vector
@@ -53,33 +91,29 @@ private:
     Point direction;
 
 public:
+    //contructores
     Vector(const Point& o, const Point& d);
+    Vector(const Vector&);
+    Vector();
     //settet
 
     //getter
-    const Point& getOrigin()const;
-    const Point& getDirectrion()const;
+    Point& getOrigin();
+    Point& getDirection();
+
+    //operator
+    const Vector& operator +(const Vector&);
+    const Vector& operator *(COBANI_TYPE_DECIMAL);
+    const Vector& operator =(const Vector&);
 
     //funtions
-    bool normalize();
     COBANI_TYPE_DECIMAL length()const;
-
+    bool rotate(const Point& u,COBANI_TYPE_DECIMAL degree);
+    bool move(const Point& v);
 };
 
 
-/**
-*\brief Interface para aplicar operaciones a los objetos
-*/
-class DLL_SPEC Matter
-{
-public:
-    virtual bool move(const Vector& v) = 0;
-    /**
-    *\brief Es la rotacion algebraica.
-    *\param u es el vector unitario en el cual se realizara la rotacion.
-    */
-    virtual bool rotate(const Point& u) = 0;
-};
+
 
 
 class DLL_SPEC Entity
@@ -89,87 +123,99 @@ private:
 
 public:
     Entity();
+    ~Entity();
     const std::string& getID() const;
 };
 
 
-class DLL_SPEC Atomo : public Entity, public Matter
+class DLL_SPEC Atom : public Entity
 {
 private:
-    Point point;
-    Point direction;
+
+
+protected:
+    Vector position;
+    Vector u;
+    Vector v;
 
 public:
-    Atomo(const Point& p);
+    Atom();
+    Atom(const Vector& p);
+    ~Atom();
 
     //gettter
-    const Point& getPoint()const;
+    const Vector& getPosition()const;
 
-    //matter
-    virtual bool move(const Vector& v);
-    virtual bool rotate(const Point& u);
+    //setter
+    void setPosition(const Vector& v);
+
+    //funtions
+    virtual bool generate() = 0;
 };
 
 
-class Object : public Matter
+class DLL_SPEC Object : public Entity
 {
 private:
-    Point point;
-    std::vector<Point> points;
+    std::vector<Atom*> atoms;
 
 public:
     /**
     *
-    *\param sizepoly la cantidad de puntos que definira el poligono
+    *\param count la cantidad de atomos que conforman el objeto
     */
-    Object(int sizepoly);
+    Object(int count);
+    Object();
+    Object(const Object& obj);
+    ~Object();
 
     //gettter
-    const std::vector<Point>& getPoints()const;
+    const std::vector<Atom*>& getAtoms()const;
 
-    //matter
-    virtual bool move(const Vector& v);
-    virtual bool rotate(const Point& u);
+    //funtion
+    bool interior();
+    bool exterior();
 };
 
 
-class World : public Object
+class DLL_SPEC World : public Object
 {
+private:
+    std::map<std::string,Object> objects;
 
 public:
-    //matter
-    virtual bool move(const Vector& v);
-    virtual bool rotate(const Point& u);
+    //constructor
+
 };
 
 
-class Context
+class DLL_SPEC Context
 {
 
 };
 
-class Comunity : public Context
+class DLL_SPEC Comunity : public Context
 {
 
 };
 
-class Person : public Context
+class DLL_SPEC Person : public Context
 {
 
 };
 
-class Room : public Context
+class DLL_SPEC Room : public Context
 {
 
 };
 
-class School : public Context
+class DLL_SPEC School : public Context
 {
 
 
 };
 
-class Social : public Context
+class DLL_SPEC Social : public Context
 {
 
 };

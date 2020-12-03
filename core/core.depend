@@ -1,16 +1,61 @@
 # depslib dependency file v1.0
 1584201822 source:c:\users\azael\develop\cobani\core\main.cpp
 
-1606976135 source:c:\users\azael\develop\cobani\core\src\entities.cc
-	<math.h>
+1607149642 source:c:\users\azael\develop\cobani\core\src\entities.cc
+	<gl/gl.h>
 	"Entities.hh"
 	<iostream>
 
-1606975515 c:\users\azael\develop\cobani\core\src\entities.hh
+1607149653 c:\users\azael\develop\cobani\core\src\entities.hh
+	<math.h>
 	<string>
 	<vector>
+	<map>
+	<exception>
 
-1606977342 source:c:\users\azael\develop\cobani\core\tests\main.cpp
+1606985931 source:c:\users\azael\develop\cobani\core\tests\main.cpp
 	<Entities.hh>
 	<iostream>
+
+1607117248 source:c:\users\azael\develop\cobani\core\tests\window.cc
+	<Entities.hh>
+	<iostream>
+	<gl/gl.h>
+	"Window.hh"
+
+1607116123 c:\users\azael\develop\cobani\core\tests\window.hh
+	<windows.h>
+	<Dust.hh>
+	"Console.hh"
+
+1607115927 source:c:\users\azael\develop\cobani\core\tests\main-windows.cc
+	"Window.hh"
+
+1606989260 c:\users\azael\develop\cobani\core\tests\test.hh
+
+1606989339 source:c:\users\azael\develop\cobani\core\tests\test.cc
+	<iostream>
+	<Entities.hh>
+	"Test.hh"
+
+1607126990 source:c:\users\azael\develop\cobani\core\tests\console.cc
+	<iostream>
+	<Entities.hh>
+	"Console.hh"
+
+1607140098 c:\users\azael\develop\cobani\core\tests\console.hh
+	<GLFW/glfw3.h>
+	<stdlib.h>
+	<stdio.h>
+
+1607149083 source:c:\users\azael\develop\cobani\core\src\dust.cc
+	<gl/gl.h>
+	<iostream>
+	"Dust.hh"
+
+1607113465 c:\users\azael\develop\cobani\core\src\dust.hh
+	"Entities.hh"
+
+1607141971 source:c:\users\azael\develop\cobani\core\tests\test2d.cc
+	"Console.hh"
 

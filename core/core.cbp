@@ -2,12 +2,12 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="core" />
+		<Option title="cobani-core" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/libcore" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/libcobani-core" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
 				<Option type="3" />
 				<Option compiler="gcc" />
@@ -15,6 +15,9 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DBUILDING_DLL" />
+					<Add option="-DWINDOWS_MINGW" />
+					<Add directory="src" />
 				</Compiler>
 			</Target>
 			<Target title="Release">
@@ -26,9 +29,32 @@
 				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-O2" />
+					<Add directory="src" />
 				</Compiler>
 				<Linker>
 					<Add option="-s" />
+				</Linker>
+			</Target>
+			<Target title="testing">
+				<Option output="bin/Debug/core" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="1" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add option="-DDEBUG" />
+					<Add option="-DWINDOWS_MINGW" />
+					<Add option="-DTESTING" />
+					<Add directory="src" />
+				</Compiler>
+				<Linker>
+					<Add library="C:/Windows/System32/glu32.dll" />
+					<Add library="C:/Windows/System32/gdi32.dll" />
+					<Add library="C:/Windows/System32/opengl32.dll" />
+					<Add library="C:/msys64/mingw64/lib/libglfw3.a" />
+					<Add library="C:/msys64/mingw64/lib/libglfw3.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libglew32.a" />
+					<Add library="C:/msys64/mingw64/lib/libglew32.dll.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -36,10 +62,33 @@
 			<Add option="-Wall" />
 			<Add option="-fexceptions" />
 		</Compiler>
-		<Unit filename="main.cpp" />
+		<Unit filename="src/Dust.cc" />
+		<Unit filename="src/Dust.hh" />
+		<Unit filename="src/Entities.cc" />
 		<Unit filename="src/Entities.hh" />
+		<Unit filename="tests/Console.cc">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/Console.hh">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/Window.cc">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/Window.hh">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/main-windows.cc">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/test2D.cc">
+			<Option target="testing" />
+		</Unit>
 		<Extensions>
-			<lib_finder disable_auto="1" />
+			<lib_finder disable_auto="1">
+				<lib name="/glew" />
+				<lib name="/glibmm-2.4" />
+			</lib_finder>
 		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

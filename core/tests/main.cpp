@@ -2,7 +2,11 @@
 #include <Entities.hh>
 #include <iostream>
 
-int main()
+
+
+
+
+int main(int argc, char* argv[])
 {
     cobani::core::Point p1;
     cobani::core::Point p2;
@@ -50,9 +54,7 @@ int main()
 
 
 
-
-
-
-
     return 0;
 }
+
+
