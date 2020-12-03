@@ -4,6 +4,10 @@
 
 #include "Entities.hh"
 
+#ifdef DEBUG
+    #include <iostream>
+#endif // DEBUG
+
 namespace cobani::core
 {
 
@@ -104,9 +108,39 @@ namespace cobani::core
         origin = o;
         direction = d;
     }
-    bool Vector::makeUnit()
+    bool Vector::normalize()
     {
+        COBANI_TYPE_DECIMAL lenvect = length();
+        #ifdef DEBUG
+            std::cout << "X = " << direction[COBANI_PX] << "\n";
+        #endif // DEBUG
+        direction[COBANI_PX] = ((direction[COBANI_PX]/lenvect) + origin[COBANI_PX]);
+        #ifdef DEBUG
+            std::cout << "lenvect = " << lenvect << "\n";
+            std::cout << "X = " << direction[COBANI_PX] << "\n";
+        #endif // DEBUG
 
+
+        #ifdef DEBUG
+            std::cout << "Y = " << direction[COBANI_PY] << "\n";
+        #endif // DEBUG
+        direction[COBANI_PY] = ((direction[COBANI_PY]/lenvect) + origin[COBANI_PY]);
+        #ifdef DEBUG
+            std::cout << "lenvect = " << lenvect << "\n";
+            std::cout << "Y = " << direction[COBANI_PY] << "\n";
+        #endif // DEBUG
+
+
+        #ifdef DEBUG
+            std::cout << "Z = " << direction[COBANI_PZ] << "\n";
+        #endif // DEBUG
+        direction[COBANI_PZ] = ((direction[COBANI_PZ]/lenvect) + origin[COBANI_PZ]);
+        #ifdef DEBUG
+            std::cout << "lenvect = " << lenvect << "\n";
+            std::cout << "X = " << direction[COBANI_PZ] << "\n";
+        #endif // DEBUG
+
+        return true;
     }
     COBANI_TYPE_DECIMAL Vector::length()const
     {
@@ -124,9 +158,9 @@ namespace cobani::core
 
     COBANI_TYPE_DECIMAL Point::lengthTo(const Point& to)const
     {
-        COBANI_TYPE_DECIMAL lengx = (at(COBANI_PX) - to[COBANI_PX]);
-        COBANI_TYPE_DECIMAL lengy = (at(COBANI_PY) - to[COBANI_PY]);
-        COBANI_TYPE_DECIMAL lengz = (at(COBANI_PZ) - to[COBANI_PZ]);
+        COBANI_TYPE_INTEGER lengx = to[COBANI_PX] - at(COBANI_PX);
+        COBANI_TYPE_INTEGER lengy = to[COBANI_PY] - at(COBANI_PY);
+        COBANI_TYPE_INTEGER lengz = to[COBANI_PZ] - at(COBANI_PZ);
 
         COBANI_TYPE_DECIMAL leng = pow(lengx,2) + pow(lengy,2) + pow(lengz,2);
         leng = sqrt(leng);
@@ -135,31 +169,31 @@ namespace cobani::core
     /**
     **      Point
     **/
-    void Point::setX(COBANI_TYPE_INT v)
+    void Point::setX(COBANI_TYPE_DECIMAL v)
     {
         at(COBANI_PX) = v;
     }
-    void Point::setY(COBANI_TYPE_INT v)
+    void Point::setY(COBANI_TYPE_DECIMAL v)
     {
         at(COBANI_PY) = v;
     }
-    void Point::setZ(COBANI_TYPE_INT v)
+    void Point::setZ(COBANI_TYPE_DECIMAL v)
     {
         at(COBANI_PZ) = v;
     }
-    COBANI_TYPE_INT Point::getX()const
+    COBANI_TYPE_DECIMAL Point::getX()const
     {
         return at(COBANI_PX);
     }
-    COBANI_TYPE_INT Point::getY()const
+    COBANI_TYPE_DECIMAL Point::getY()const
     {
         return at(COBANI_PY);
     }
-    COBANI_TYPE_INT Point::getZ()const
+    COBANI_TYPE_DECIMAL Point::getZ()const
     {
         return at(COBANI_PZ);
     }
-    Point::Point() : std::vector<COBANI_TYPE_INT>(COBANI_DIMENSION)
+    Point::Point() : std::vector<COBANI_TYPE_DECIMAL>(COBANI_DIMENSION)
     {
 
     }

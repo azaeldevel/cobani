@@ -1,7 +1,7 @@
 #ifndef ENTITIES_HH_INCLUDED
 #define ENTITIES_HH_INCLUDED
 
-#ifdef BUILDING_DLL && WINDOWS_MINGW
+#if defined BUILDING_DLL && WINDOWS_MINGW
     #define DLL_SPEC __declspec(dllexport)
 #elif WINDOWS_MINGW
     #define DLL_SPEC __declspec(dllimport)
@@ -10,7 +10,7 @@
 #endif
 
 
-#define COBANI_TYPE_INT long
+#define COBANI_TYPE_INTEGER long
 #define COBANI_TYPE_DECIMAL double
 
 
@@ -25,9 +25,8 @@
 namespace cobani::core
 {
 
-class DLL_SPEC Point : public std::vector<COBANI_TYPE_INT>
+class DLL_SPEC Point : public std::vector<COBANI_TYPE_DECIMAL>
 {
-
 public:
     //constructores
     Point();
@@ -35,13 +34,13 @@ public:
     //operadores
 
     //getters
-    COBANI_TYPE_INT getX()const;
-    COBANI_TYPE_INT getY()const;
-    COBANI_TYPE_INT getZ()const;
+    COBANI_TYPE_DECIMAL getX()const;
+    COBANI_TYPE_DECIMAL getY()const;
+    COBANI_TYPE_DECIMAL getZ()const;
     //setter
-    void setX(COBANI_TYPE_INT);
-    void setY(COBANI_TYPE_INT);
-    void setZ(COBANI_TYPE_INT);
+    void setX(COBANI_TYPE_DECIMAL);
+    void setY(COBANI_TYPE_DECIMAL);
+    void setZ(COBANI_TYPE_DECIMAL);
 
     //funtions
     COBANI_TYPE_DECIMAL lengthTo(const Point&)const;
@@ -62,7 +61,7 @@ public:
     const Point& getDirectrion()const;
 
     //funtions
-    bool makeUnit();
+    bool normalize();
     COBANI_TYPE_DECIMAL length()const;
 
 };
