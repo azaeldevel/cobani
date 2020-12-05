@@ -309,6 +309,41 @@ namespace cobani::core
     {
 
     }
+
+    //fontions
+
+    bool Point::rotate(const Point& eje)
+    {
+        COBANI_TYPE_DECIMAL lengPen = eje.lengthTo(Point::O);
+        if(fabs(lengPen - 1.0) >= COBANI_EPSILON)
+        {
+            std::string msg = "El vector usado para la rotacion deve tener longitud unitaria, ahora tiene '";
+            msg = msg + std::to_string(lengPen) + "'";
+            throw Exception(__FILE__,__LINE__,msg);
+        }
+
+        #if COBANI_DIMENSION >= 2
+        COBANI_TYPE_DECIMAL v1xNew = (eje[COBANI_PX] * at(COBANI_PX)) - (eje[COBANI_PY] * at(COBANI_PY));
+        COBANI_TYPE_DECIMAL v1yNew = (eje[COBANI_PY] * at(COBANI_PX)) + (eje[COBANI_PX] * at(COBANI_PY));
+        at(COBANI_PX) = v1xNew;
+        at(COBANI_PY) = v1yNew;
+        #endif
+
+        return true;
+    }
+    bool Point::rotate(COBANI_TYPE_DECIMAL theta)
+    {
+        #if COBANI_DIMENSION >= 2
+        std::cout << "Rotando " << (std::string)*this << " -> ";
+        COBANI_TYPE_DECIMAL xNew = (cos(theta) * at(COBANI_PX)) - (sin(theta) * at(COBANI_PY));
+        COBANI_TYPE_DECIMAL yNew = (sin(theta) * at(COBANI_PX)) + (cos(theta) * at(COBANI_PY));
+        at(COBANI_PX) = xNew;
+        at(COBANI_PY) = yNew;
+        std::cout << (std::string)*this << "\n";
+        #endif
+
+        return true;
+    }
     bool Point::normalize()
     {
         COBANI_TYPE_DECIMAL lenvect = lengthTo(Point::O);

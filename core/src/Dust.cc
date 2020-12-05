@@ -59,8 +59,7 @@ bool Dust::generate()
     std::cout << "Longitud : " << position.getDirection().lengthTo(Point::O) << "\n";
     //position.rotate(theta);
     //std::cout << "Rotado : " << (std::string)dir << "\n";
-    Point u,v;
-    u = position.getDirection();
+
     std::cout << "u " << (std::string)dir << "\n";
 
     glPushMatrix();
@@ -73,36 +72,37 @@ bool Dust::generate()
         glBegin(GL_TRIANGLES);
             //
             glColor3f(0.0f, 0.0f, 1.0f);
-            Point v1;
-            const COBANI_TYPE_DECIMAL v1xInit = 0.0;
-            const COBANI_TYPE_DECIMAL v1yInit = 0.0;
-            COBANI_TYPE_DECIMAL v1xNew = (u[COBANI_PX] * v1xInit) - (u[COBANI_PY] * v1yInit);
-            COBANI_TYPE_DECIMAL v1yNew = (u[COBANI_PY] * v1xInit) + (u[COBANI_PX] * v1yInit);
-            glVertex2d(v1xNew,  v1yNew);
+            Point v1(0,0);
+            //COBANI_TYPE_DECIMAL v1xNew = (position.getDirection()[COBANI_PX] * v1xInit) - (position.getDirection()[COBANI_PY] * v1yInit);
+            //COBANI_TYPE_DECIMAL v1yNew = (position.getDirection()[COBANI_PY] * v1xInit) + (position.getDirection()[COBANI_PX] * v1yInit);
+            v1.rotate(position.getDirection());
+            glVertex2d(position.getOrigin()[COBANI_PX] + v1[COBANI_PX],  position.getOrigin()[COBANI_PY] + v1[COBANI_PY]);
 
             //
             glColor3f(0.0f, 1.0f, 0.0f);
-            Point v2;
-            const COBANI_TYPE_DECIMAL v2xInit = 0.5;
+            Point v2(0.5,lm);
+            /*const COBANI_TYPE_DECIMAL v2xInit = 0.5;
             const COBANI_TYPE_DECIMAL v2yInit = lm;
-            COBANI_TYPE_DECIMAL v2xNew = (u[COBANI_PX] * v2xInit) - (u[COBANI_PY] * v2yInit);
-            COBANI_TYPE_DECIMAL v2yNew = (u[COBANI_PY] * v2xInit) + (u[COBANI_PX] * v2yInit);
-            glVertex2d(v2xNew,  v2yNew);
+            COBANI_TYPE_DECIMAL v2xNew = (position.getDirection()[COBANI_PX] * v2xInit) - (position.getDirection()[COBANI_PY] * v2yInit);
+            COBANI_TYPE_DECIMAL v2yNew = (position.getDirection()[COBANI_PY] * v2xInit) + (position.getDirection()[COBANI_PX] * v2yInit);*/
+            v2.rotate(position.getDirection());
+            glVertex2d(position.getOrigin()[COBANI_PX] + v2[COBANI_PX],  position.getOrigin()[COBANI_PY] + v2[COBANI_PY]);
 
             //
             glColor3f(1.0f, 0.0f, 0.0f);
-            Point v3;
-            const COBANI_TYPE_DECIMAL v3xInit = 1.0;
+            Point v3(1.0,0.0);
+            /*const COBANI_TYPE_DECIMAL v3xInit = 1.0;
             const COBANI_TYPE_DECIMAL v3yInit = 0.0;
-            COBANI_TYPE_DECIMAL v3xNew = (u[COBANI_PX] * v3xInit) - (u[COBANI_PY] * v3yInit);
-            COBANI_TYPE_DECIMAL v3yNew = (u[COBANI_PY] * v3xInit) + (u[COBANI_PX] * v3yInit);
-            glVertex2d(v3xNew,  v3yNew);
+            COBANI_TYPE_DECIMAL v3xNew = (position.getDirection()[COBANI_PX] * v3xInit) - (position.getDirection()[COBANI_PY] * v3yInit);
+            COBANI_TYPE_DECIMAL v3yNew = (position.getDirection()[COBANI_PY] * v3xInit) + (position.getDirection()[COBANI_PX] * v3yInit);*/
+            v3.rotate(position.getDirection());
+            glVertex2d(position.getOrigin()[COBANI_PX] + v3[COBANI_PX],  position.getOrigin()[COBANI_PY] + v3[COBANI_PY]);
         glEnd();
 
     glPopMatrix();
 
     //theta += 0.05;
-    position.rotate(0.01);
+    position.rotate(theta);
 
     return true;
 }

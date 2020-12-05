@@ -82,6 +82,9 @@ public:
     //funtions
     COBANI_TYPE_DECIMAL lengthTo(const Point&)const;
     bool normalize();
+    bool rotate(const Point& u);
+    bool rotate(COBANI_TYPE_DECIMAL theta);
+    bool move(const Point& v);
 };
 
 class DLL_SPEC Vector
@@ -136,8 +139,6 @@ private:
 
 protected:
     Vector position;
-    Vector u;
-    Vector v;
 
 public:
     Atom();
