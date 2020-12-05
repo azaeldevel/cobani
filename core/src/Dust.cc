@@ -15,26 +15,26 @@
 namespace cobani::core
 {
 #if COBANI_DIMENSION >= 2
-Dust::Dust(const Vector& v) : Atom(v),dir(2.5,2.5)
+Dust::Dust(const Vector& v) : Atom(v)
 {
-    //ctor
-    std::cout << "Original ctro: " << (std::string)dir << "\n";
-    //dir.normalize();
-    std::cout << "Normalizado ctro : " << (std::string)dir << "\n";
 }
 #endif
 #if COBANI_DIMENSION >= 3
-Dust::Dust(const Vector& v) : Atom(v),dir(0.5,0.5,1.0)
+Dust::Dust(const Vector& v) : Atom(v)
 {
-    //ctor
-    std::cout << "Original ctro: " << (std::string)dir << "\n";
-    //dir.normalize();
-    std::cout << "Normalizado ctro : " << (std::string)dir << "\n";
 }
 #endif
-Dust::Dust()
+#if COBANI_DIMENSION == 2
+Dust::Dust() : Atom(Vector(Point(21,23),Point(2.0,2.0)))
 {
+    position.getDirection().normalize();
 }
+#elif COBANI_DIMENSION == 3
+Dust::Dust() : Atom(Vector(Point(21,23,11),Point(2.0,2.0,6.3)))
+{
+    position.getOrigin().normalize();
+}
+#endif
 
 Dust::~Dust()
 {
@@ -52,15 +52,15 @@ bool Dust::generate()
     glClearColor(0.0f, 0.0f, 0.0f, 0.0f);
     glClear(GL_COLOR_BUFFER_BIT);
 
-    //glRotatef(theta, 0.0f, 1.0f, 1.0f);
-    std::cout << "Original : " << (std::string)dir << "\n";
-    if(fabs(dir.lengthTo(Point::O) - 1.0) >= COBANI_EPSILON) dir.normalize();
-    std::cout << "Normalizado : " << (std::string)dir << "\n";
-    std::cout << "Longitud : " << dir.lengthTo(Point::O) << "\n";
+
+    std::cout << "Original : " << (std::string)position.getDirection() << "\n";
+    if(fabs(dir.lengthTo(Point::O) - 1.0) >= COBANI_EPSILON) position.getDirection().normalize();
+    std::cout << "Normalizado : " << (std::string)position.getDirection() << "\n";
+    std::cout << "Longitud : " << position.getDirection().lengthTo(Point::O) << "\n";
     //position.rotate(theta);
     //std::cout << "Rotado : " << (std::string)dir << "\n";
     Point u,v;
-    u = dir;
+    u = position.getDirection();
     std::cout << "u " << (std::string)dir << "\n";
 
     glPushMatrix();
@@ -101,8 +101,8 @@ bool Dust::generate()
 
     glPopMatrix();
 
-    //dir = position.getDirection();
-    //theta += 1.0f;
+    //theta += 0.05;
+    position.rotate(0.01);
 
     return true;
 }

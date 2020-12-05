@@ -43,7 +43,7 @@ bool Window::triangle()
 
     SwapBuffers(hDC);
 
-    theta += 1.0f;
+    theta += 0.25f;
 
     return true;
 }

@@ -20,7 +20,7 @@ public:
 protected:
 
 private:
-    double theta = 0.25;
+    double theta;
     Point dir;
 };
 

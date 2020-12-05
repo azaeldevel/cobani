@@ -178,7 +178,7 @@ namespace cobani::core
     {
         return origin.lengthTo(direction);
     }
-    bool Vector::rotate(const Point& eje,COBANI_TYPE_DECIMAL theta)
+    bool Vector::rotate(const Point& eje)
     {
         COBANI_TYPE_DECIMAL lengPen = eje.lengthTo(Point::O);
         if(fabs(lengPen - 1.0) >= COBANI_EPSILON)
@@ -187,14 +187,23 @@ namespace cobani::core
             msg = msg + std::to_string(lengPen) + "'";
             throw Exception(__FILE__,__LINE__,msg);
         }
-        Point orthoeje;
-        orthoeje.setX(-1.0 * eje.getY());
-        orthoeje.setY(eje.getX());
+
         #if COBANI_DIMENSION >= 2
-        //X'
-        direction[COBANI_PX] = eje[COBANI_PX] * direction[COBANI_PX] - eje[COBANI_PY] * direction[COBANI_PY];
-        //Y'
-        direction[COBANI_PY] = eje[COBANI_PY] * direction[COBANI_PX] + eje[COBANI_PX] * direction[COBANI_PY];
+        COBANI_TYPE_DECIMAL v1xNew = (eje[COBANI_PX] * direction[COBANI_PX]) - (eje[COBANI_PY] * direction[COBANI_PY]);
+        COBANI_TYPE_DECIMAL v1yNew = (eje[COBANI_PY] * direction[COBANI_PX]) + (eje[COBANI_PX] * direction[COBANI_PY]);
+        direction[COBANI_PX] = v1xNew;
+        direction[COBANI_PY] = v1yNew;
+        #endif
+
+        return true;
+    }
+    bool Vector::rotate(COBANI_TYPE_DECIMAL theta)
+    {
+        #if COBANI_DIMENSION >= 2
+        COBANI_TYPE_DECIMAL v1xNew = (cos(theta) * direction[COBANI_PX]) - (sin(theta) * direction[COBANI_PY]);
+        COBANI_TYPE_DECIMAL v1yNew = (sin(theta) * direction[COBANI_PX]) + (cos(theta) * direction[COBANI_PY]);
+        direction[COBANI_PX] = v1xNew;
+        direction[COBANI_PY] = v1yNew;
         #endif
 
         return true;

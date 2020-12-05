@@ -38,7 +38,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
             //wind1.triangle();
             wind1.world();
             //wind1.glfwWindow();
-            Sleep (1);
+            Sleep (100);
         }
     }
 

@@ -108,7 +108,8 @@ public:
 
     //funtions
     COBANI_TYPE_DECIMAL length()const;
-    bool rotate(const Point& u,COBANI_TYPE_DECIMAL degree);
+    bool rotate(const Point& u);
+    bool rotate(COBANI_TYPE_DECIMAL theta);
     bool move(const Point& v);
 };
 
