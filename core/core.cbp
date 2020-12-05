@@ -42,12 +42,23 @@
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-mthreads" />
+					<Add option="-fmessage-length=0" />
+					<Add option="-fexceptions" />
+					<Add option="-fident" />
 					<Add option="-DDEBUG" />
 					<Add option="-DWINDOWS_MINGW" />
 					<Add option="-DTESTING" />
+					<Add option="-DWIN32" />
+					<Add option="-D_WINDOWS" />
 					<Add directory="src" />
+					<Add directory="C:/msys64/mingw64/include/OGRE" />
+					<Add directory="C:/msys64/mingw64/include/ois" />
 				</Compiler>
 				<Linker>
+					<Add option="-Wl,--enable-auto-image-base" />
+					<Add option="-Wl,--add-stdcall-alias" />
+					<Add option="-Wl,--enable-auto-import" />
 					<Add library="C:/Windows/System32/glu32.dll" />
 					<Add library="C:/Windows/System32/gdi32.dll" />
 					<Add library="C:/Windows/System32/opengl32.dll" />
@@ -55,6 +66,18 @@
 					<Add library="C:/msys64/mingw64/lib/libglfw3.dll.a" />
 					<Add library="C:/msys64/mingw64/lib/libglew32.a" />
 					<Add library="C:/msys64/mingw64/lib/libglew32.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreBites.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreBitesQt.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreMain.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreMeshLodGenerator.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreOverlay.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgrePaging.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreProperty.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreRTShaderSystem.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreTerrain.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOgreVolume.dll.a" />
+					<Add library="C:/msys64/mingw64/lib/libOIS.a" />
+					<Add library="C:/msys64/mingw64/lib/libOIS.dll.a" />
 				</Linker>
 			</Target>
 		</Build>
@@ -70,6 +93,12 @@
 			<Option target="testing" />
 		</Unit>
 		<Unit filename="tests/Console.hh">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/OgreTest.cc">
+			<Option target="testing" />
+		</Unit>
+		<Unit filename="tests/OgreTest.hh">
 			<Option target="testing" />
 		</Unit>
 		<Unit filename="tests/Window.cc">
