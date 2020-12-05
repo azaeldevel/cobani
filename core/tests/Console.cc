@@ -5,6 +5,23 @@
 #include "Console.hh"
 
 
+#include <GLFW/glfw3.h>
+#include <stdlib.h>
+#include <stdio.h>
+
+
+
+static void error_callback(int error, const char* description)
+{
+    fputs(description, stderr);
+}
+static void key_callback(GLFWwindow* window, int key, int scancode, int action, int mods)
+{
+    if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
+        glfwSetWindowShouldClose(window, GL_TRUE);
+}
+
+
 
 bool Console::points()
 {
@@ -20,12 +37,15 @@ bool Console::points()
     p2[COBANI_PZ] = 26;
 
     COBANI_TYPE_DECIMAL lp1p2 = p1.lengthTo(p2);
-    if(fabs(lp1p2 - 86.2206) >= COBANI_EPSILON)
+    if(fabs(lp1p2 - 84.5281) >= COBANI_EPSILON)
     {
         std::cout << "p1.lengthTo(p2) != " << lp1p2 <<  " | " << std::to_string(fabs(lp1p2 - 88.2206)) << std::endl;
     }
 
-    cobani::core::Vector vec1(p1,p2);
+    cobani::core::Point p2d;
+    p2d = p2;
+    p2d.normalize();
+    cobani::core::Vector vec1(p1,p2d);
     COBANI_TYPE_DECIMAL lenvec1 = vec1.length();
     if(lenvec1  - 118.465 >= COBANI_EPSILON)
     {

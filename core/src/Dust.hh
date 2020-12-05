@@ -9,18 +9,23 @@ namespace cobani::core
 class DLL_SPEC Dust : public Atom
 {
 public:
+    //
+    const double theta = 0.01;
+
+    //
     Dust();
     Dust(const Vector& p);
     virtual ~Dust();
 
     //matter
-    virtual bool move(const Vector& v);
     virtual bool rotate(const Point& u);
+    virtual bool rotate(COBANI_TYPE_DECIMAL theta);
+    virtual bool move(const Point& v);
+    virtual bool move(COBANI_TYPE_DECIMAL length);
     virtual bool generate();
 protected:
 
 private:
-    double theta = 0.01;
     Point dir;
 };
 

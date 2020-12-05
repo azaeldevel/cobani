@@ -29,6 +29,17 @@
 
 namespace cobani::core
 {
+class Point;
+
+
+class Matter
+{
+public:
+    virtual bool rotate(const Point& u) = 0;
+    virtual bool rotate(COBANI_TYPE_DECIMAL theta) = 0;
+    virtual bool move(const Point& v) = 0;
+    virtual bool move(COBANI_TYPE_DECIMAL length) = 0;
+};
 
 class Exception : public std::exception
 {
@@ -99,7 +110,8 @@ public:
     Vector(const Vector&);
     Vector();
     //settet
-
+    void setOrigin(const Point&);
+    void setDirection(const Point&);
     //getter
     Point& getOrigin();
     Point& getDirection();
@@ -132,7 +144,7 @@ public:
 };
 
 
-class DLL_SPEC Atom : public Entity
+class DLL_SPEC Atom : public Entity, public Matter
 {
 private:
 

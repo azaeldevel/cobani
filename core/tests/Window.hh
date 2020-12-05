@@ -34,7 +34,6 @@ private:
     HWND hwnd;
     HDC hDC;
     HGLRC hRC;
-    float theta = 0.0f;
     cobani::core::Dust dust;
 };
 

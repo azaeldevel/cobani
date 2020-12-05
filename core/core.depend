@@ -1,12 +1,12 @@
 # depslib dependency file v1.0
 1584201822 source:c:\users\azael\develop\cobani\core\main.cpp
 
-1607157237 source:c:\users\azael\develop\cobani\core\src\entities.cc
+1607159047 source:c:\users\azael\develop\cobani\core\src\entities.cc
 	<gl/gl.h>
 	"Entities.hh"
 	<iostream>
 
-1607156366 c:\users\azael\develop\cobani\core\src\entities.hh
+1607159981 c:\users\azael\develop\cobani\core\src\entities.hh
 	<math.h>
 	<string>
 	<vector>
@@ -17,13 +17,13 @@
 	<Entities.hh>
 	<iostream>
 
-1607155360 source:c:\users\azael\develop\cobani\core\tests\window.cc
+1607160223 source:c:\users\azael\develop\cobani\core\tests\window.cc
 	<Entities.hh>
 	<iostream>
 	<gl/gl.h>
 	"Window.hh"
 
-1607116123 c:\users\azael\develop\cobani\core\tests\window.hh
+1607160454 c:\users\azael\develop\cobani\core\tests\window.hh
 	<windows.h>
 	<Dust.hh>
 	"Console.hh"
@@ -38,24 +38,24 @@
 	<Entities.hh>
 	"Test.hh"
 
-1607126990 source:c:\users\azael\develop\cobani\core\tests\console.cc
+1607159472 source:c:\users\azael\develop\cobani\core\tests\console.cc
 	<iostream>
 	<Entities.hh>
 	"Console.hh"
-
-1607140098 c:\users\azael\develop\cobani\core\tests\console.hh
 	<GLFW/glfw3.h>
 	<stdlib.h>
 	<stdio.h>
 
-1607157324 source:c:\users\azael\develop\cobani\core\src\dust.cc
+1607159412 c:\users\azael\develop\cobani\core\tests\console.hh
+
+1607160408 source:c:\users\azael\develop\cobani\core\src\dust.cc
 	<gl/gl.h>
 	<gmp.h>
 	<iostream>
 	<assert.h>
 	"Dust.hh"
 
-1607156937 c:\users\azael\develop\cobani\core\src\dust.hh
+1607160483 c:\users\azael\develop\cobani\core\src\dust.hh
 	"Entities.hh"
 
 1607141971 source:c:\users\azael\develop\cobani\core\tests\test2d.cc

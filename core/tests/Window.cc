@@ -17,6 +17,7 @@ bool Window::world()
     {
         std::cout << "Error : " << ex.what() << "\n";
     }
+    dust.rotate(dust.theta);
 
     SwapBuffers(hDC);
 
@@ -29,7 +30,7 @@ bool Window::triangle()
     glClear(GL_COLOR_BUFFER_BIT);
 
     glPushMatrix();
-    glRotatef(theta, 0.0f, 0.0f, 1.0f);
+    glRotatef(dust.theta, 0.0f, 0.0f, 1.0f);
 
     glBegin(GL_TRIANGLES);
 
@@ -43,8 +44,6 @@ bool Window::triangle()
 
     SwapBuffers(hDC);
 
-    theta += 0.25f;
-
     return true;
 }
 
@@ -57,7 +56,7 @@ BOOL Window::show(int  nCmdShow)
     return ShowWindow(hwnd, nCmdShow);
 }
 #if COBANI_DIMENSION >= 2
-Window::Window(HINSTANCE hInstance) : dust(Vector(Point(0,0),Point(12,19)))
+Window::Window(HINSTANCE hInstance)
 {
     /* register window class */
     wcex.cbSize = sizeof(WNDCLASSEX);
