@@ -4,11 +4,8 @@
 
 1607220805 c:\users\azael\develop\cobani\gui\src\main.hh
 
-1584201820 source:c:\users\azael\develop\cobani\gui\src\main.cpp
-	<exception>
-	<string>
-	<iostream>
-	<SDL.h>
+1607222918 source:c:\users\azael\develop\cobani\gui\src\main.cpp
+	"FirstPerons.hh"
 
 1583887169 c:\users\azael\develop\sdl2-2.0.12\x86_64-w64-mingw32\include\sdl2\sdl.h
 	"SDL_main.h"
@@ -363,4 +360,21 @@
 	"SDL_stdinc.h"
 	"begin_code.h"
 	"close_code.h"
+
+1607222898 source:c:\users\azael\develop\cobani\gui\src\firstperons.cc
+	"FirstPerons.hh"
+
+1607224130 c:\users\azael\develop\cobani\gui\src\firstperons.hh
+	<exception>
+	<string>
+	<iostream>
+	<SDL.h>
+	<Entities.hh>
+
+1607222778 c:\users\azael\develop\cobani\core\src\entities.hh
+	<math.h>
+	<string>
+	<vector>
+	<map>
+	<exception>
 

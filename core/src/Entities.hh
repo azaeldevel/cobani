@@ -3,7 +3,7 @@
 
 #if defined BUILDING_DLL && WINDOWS_MINGW
     #define DLL_SPEC __declspec(dllexport)
-#elif WINDOWS_MINGW && !TESTING
+#elif WINDOWS_MINGW && !TESTING && !defined BUILDING_DLL
     #define DLL_SPEC __declspec(dllimport)
 #else
     #define DLL_SPEC
@@ -30,10 +30,10 @@
 
 namespace cobani::core
 {
-class Point;
+class DLL_SPEC Point;
 
 
-class Matter
+class DLL_SPEC Matter
 {
 public:
     virtual bool rotate(const Point& u) = 0;
@@ -42,7 +42,7 @@ public:
     virtual bool move(COBANI_TYPE_DECIMAL length) = 0;
 };
 
-class Exception : public std::exception
+class DLL_SPEC Exception : public std::exception
 {
 private:
     int line;
@@ -214,7 +214,7 @@ class DLL_SPEC Comunity : public Context
 
 };
 
-class DLL_SPEC Person : public Context
+class DLL_SPEC FirstPerson : public Context
 {
 
 };

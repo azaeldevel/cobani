@@ -6,3 +6,5 @@ ing/.~lock.Definicion.odt#
 core/bin/
 gui/obj/
 gui/bin/
+*.old
+*-old
