@@ -6,7 +6,7 @@
 	"Entities.hh"
 	<iostream>
 
-1607159981 c:\users\azael\develop\cobani\core\src\entities.hh
+1607212305 c:\users\azael\develop\cobani\core\src\entities.hh
 	<math.h>
 	<string>
 	<vector>
@@ -17,18 +17,20 @@
 	<Entities.hh>
 	<iostream>
 
-1607205465 source:c:\users\azael\develop\cobani\core\tests\window.cc
+1607212907 source:c:\users\azael\develop\cobani\core\tests\window.cc
 	<Entities.hh>
 	<iostream>
 	<gl/gl.h>
 	"Window.hh"
+	<SFML/Audio.hpp>
+	<SFML/Graphics.hpp>
 
-1607193286 c:\users\azael\develop\cobani\core\tests\window.hh
+1607212693 c:\users\azael\develop\cobani\core\tests\window.hh
 	<windows.h>
 	<Dust.hh>
 	"Console.hh"
 
-1607155780 source:c:\users\azael\develop\cobani\core\tests\main-windows.cc
+1607205613 source:c:\users\azael\develop\cobani\core\tests\main-windows.cc
 	"Window.hh"
 
 1606989260 c:\users\azael\develop\cobani\core\tests\test.hh

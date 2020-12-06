@@ -27,6 +27,7 @@ public:
     bool triangle();
     bool world();
     bool ogreWorld();
+    bool sfmlTest();
 
 protected:
 

@@ -4,7 +4,7 @@
 
 #include "Console.hh"
 
-
+/*
 #include <GLFW/glfw3.h>
 #include <stdlib.h>
 #include <stdio.h>
@@ -19,7 +19,7 @@ static void key_callback(GLFWwindow* window, int key, int scancode, int action, 
 {
     if (key == GLFW_KEY_ESCAPE && action == GLFW_PRESS)
         glfwSetWindowShouldClose(window, GL_TRUE);
-}
+}*/
 
 
 
@@ -87,7 +87,7 @@ Console::~Console()
 {
     //dtor
 }
-
+/*
 bool Console::glfwWindow()
 {
     GLFWwindow* window;
@@ -133,4 +133,4 @@ bool Console::glfwWindow()
 
     return true;
 }
-
+*/

@@ -18,7 +18,8 @@
 #define COBANI_PY 1
 #define COBANI_PZ 2
 #define COBANI_DIMENSION 2
-
+// 0 Subatomo,5 atomo, 10 obejtos
+#define COBANI_LEVEL 10
 
 #include <math.h>
 #include <string>

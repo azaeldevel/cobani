@@ -15,7 +15,7 @@ int WINAPI WinMain(HINSTANCE hInstance,
 
     /* enable OpenGL for the window */
     wind1.EnableOpenGL();
-
+    wind1.sfmlTest();
     /* program main loop */
     while (!bQuit)
     {
