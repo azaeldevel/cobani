@@ -1,7 +1,7 @@
 # depslib dependency file v1.0
 1584201822 source:c:\users\azael\develop\cobani\core\main.cpp
 
-1607159047 source:c:\users\azael\develop\cobani\core\src\entities.cc
+1607219284 source:c:\users\azael\develop\cobani\core\src\entities.cc
 	<gl/gl.h>
 	"Entities.hh"
 	<iostream>
@@ -40,7 +40,7 @@
 	<Entities.hh>
 	"Test.hh"
 
-1607159472 source:c:\users\azael\develop\cobani\core\tests\console.cc
+1607213865 source:c:\users\azael\develop\cobani\core\tests\console.cc
 	<iostream>
 	<Entities.hh>
 	"Console.hh"
@@ -1550,4 +1550,13 @@
 	<Bites/OgreInput.h>
 	<RTShaderSystem/OgreRTShaderSystem.h>
 	<iostream>
+
+1607214664 source:c:\users\azael\develop\cobani\core\tests\main-unix.cc
+	<SFML/Graphics.hpp>
+
+1607217596 source:c:\users\azael\develop\cobani\core\tests\main-sdl.cc
+	<exception>
+	<string>
+	<iostream>
+	<SDL2/SDL.h>
 

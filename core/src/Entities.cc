@@ -4,9 +4,9 @@
 
 #include "Entities.hh"
 
-#ifdef DEBUG
+#ifdef COBANI_DEBUG
     #include <iostream>
-#endif // DEBUG
+#endif
 
 namespace cobani::core
 {
@@ -279,7 +279,7 @@ namespace cobani::core
     #if COBANI_DIMENSION >= 2
     void Point::setY(COBANI_TYPE_DECIMAL v)
     {
-        std::cout << "COBANI_TYPE_DECIMAL v =  " << v << "\n";
+        //std::cout << "COBANI_TYPE_DECIMAL v =  " << v << "\n";
         at(COBANI_PY) = v;
     }
     #endif

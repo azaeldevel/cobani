@@ -17,8 +17,12 @@
 					<Add option="-g" />
 					<Add option="-DBUILDING_DLL" />
 					<Add option="-DWINDOWS_MINGW" />
+					<Add option="-DCOBANI_DEBUG" />
 					<Add directory="src" />
 				</Compiler>
+				<Linker>
+					<Add library="C:/msys64/mingw64/bin/opengl32.dll" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/libcore" prefix_auto="1" extension_auto="1" />
@@ -35,89 +39,6 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
-			<Target title="testing">
-				<Option output="bin/Debug/core" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-					<Add option="-mthreads" />
-					<Add option="-fmessage-length=0" />
-					<Add option="-fexceptions" />
-					<Add option="-fident" />
-					<Add option="-DDEBUG" />
-					<Add option="-DWINDOWS_MINGW" />
-					<Add option="-DTESTING" />
-					<Add option="-DWIN32" />
-					<Add option="-D_WINDOWS" />
-					<Add option="-DSFML_STATIC" />
-					<Add directory="src" />
-					<Add directory="C:/msys64/mingw64/include/OGRE" />
-					<Add directory="C:/msys64/mingw64/include/ois" />
-				</Compiler>
-				<Linker>
-					<Add option="-Wl,--enable-auto-image-base" />
-					<Add option="-Wl,--add-stdcall-alias" />
-					<Add option="-Wl,--enable-auto-import" />
-					<Add library="C:/Windows/System32/glu32.dll" />
-					<Add library="C:/Windows/System32/gdi32.dll" />
-					<Add library="C:/Windows/System32/opengl32.dll" />
-					<Add library="C:/msys64/mingw64/lib/libglfw3.a" />
-					<Add library="C:/msys64/mingw64/lib/libglfw3.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libglew32.a" />
-					<Add library="C:/msys64/mingw64/lib/libglew32.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreBites.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreBitesQt.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreMain.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreMeshLodGenerator.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreOverlay.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgrePaging.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreProperty.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreRTShaderSystem.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreTerrain.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOgreVolume.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libOIS.a" />
-					<Add library="C:/msys64/mingw64/lib/libOIS.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-main.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-audio.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-audio-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-graphics.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-graphics-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-network.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-network-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-system.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-system-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-window.dll.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-window-s.a" />
-				</Linker>
-			</Target>
-			<Target title="testing-sfml">
-				<Option output="bin/Debug/core" prefix_auto="1" extension_auto="1" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-					<Add option="-mthreads" />
-					<Add option="-fmessage-length=0" />
-					<Add option="-fexceptions" />
-					<Add option="-fident" />
-					<Add option="-DDEBUG" />
-					<Add option="-DWINDOWS_MINGW" />
-					<Add option="-DTESTING" />
-					<Add option="-DSFML_STATIC" />
-					<Add directory="src" />
-				</Compiler>
-				<Linker>
-					<Add library="C:/Windows/System32/glu32.dll" />
-					<Add library="C:/Windows/System32/gdi32.dll" />
-					<Add library="C:/Windows/System32/opengl32.dll" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-window-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-graphics-s.a" />
-					<Add library="C:/msys64/mingw64/lib/libsfml-system-s.a" />
-				</Linker>
-			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
@@ -128,33 +49,10 @@
 		<Unit filename="src/Entities.cc" />
 		<Unit filename="src/Entities.hh" />
 		<Unit filename="tests/Console.cc">
-			<Option target="testing" />
-			<Option target="testing-sfml" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Unit filename="tests/Console.hh">
-			<Option target="testing" />
-			<Option target="testing-sfml" />
-		</Unit>
-		<Unit filename="tests/OgreTest.cc">
-			<Option target="testing" />
-		</Unit>
-		<Unit filename="tests/OgreTest.hh">
-			<Option target="testing" />
-		</Unit>
-		<Unit filename="tests/Window.cc">
-			<Option target="testing" />
-		</Unit>
-		<Unit filename="tests/Window.hh">
-			<Option target="testing" />
-		</Unit>
-		<Unit filename="tests/main-unix.cc">
-			<Option target="testing-sfml" />
-		</Unit>
-		<Unit filename="tests/main-windows.cc">
-			<Option target="testing" />
-		</Unit>
-		<Unit filename="tests/test2D.cc">
-			<Option target="testing" />
+			<Option target="&lt;{~None~}&gt;" />
 		</Unit>
 		<Extensions>
 			<lib_finder disable_auto="1">

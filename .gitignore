@@ -4,3 +4,5 @@ core/obj/
 core/src/main.cpp
 ing/.~lock.Definicion.odt#
 core/bin/
+gui/obj/
+gui/bin/
