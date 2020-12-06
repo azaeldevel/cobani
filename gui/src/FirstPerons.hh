@@ -1,27 +1,22 @@
-#ifndef FIRSTPERONS_HH
-#define FIRSTPERONS_HH
+#ifndef FIRSTPERON_HH
+#define FIRSTPERON_HH
 
 #include <exception>
 #include <string>
 #include <iostream>
 
-#include <SDL.h>
-#include <Entities.hh>
+
+#include <contexts.hh>
 
 
 namespace cobani
 {
 
-class FirstPerson : public core::FirstPerson
+class FirstPerson : public cobani::core::FirstPerson
 {
-private:
-    SDL_Window * m_window;
-    SDL_Renderer * m_renderer;
-
 public:
     FirstPerson( Uint32 flags = 0 );
     virtual ~FirstPerson();
-    void draw();
 };
 
 

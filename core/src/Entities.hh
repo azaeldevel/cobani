@@ -21,6 +21,9 @@
 // 0 Subatomo,5 atomo, 10 obejtos
 #define COBANI_LEVEL 10
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+
 #include <math.h>
 #include <string>
 #include <vector>
@@ -204,36 +207,6 @@ public:
 };
 
 
-class DLL_SPEC Context
-{
-
-};
-
-class DLL_SPEC Comunity : public Context
-{
-
-};
-
-class DLL_SPEC FirstPerson : public Context
-{
-
-};
-
-class DLL_SPEC Room : public Context
-{
-
-};
-
-class DLL_SPEC School : public Context
-{
-
-
-};
-
-class DLL_SPEC Social : public Context
-{
-
-};
 
 
 

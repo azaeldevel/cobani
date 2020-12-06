@@ -3,7 +3,7 @@
 #include <gmp.h>
 
 
-#ifdef DEBUG
+#ifdef COBANI_DEBUG
     #include <iostream>
     #include <assert.h>
 #endif

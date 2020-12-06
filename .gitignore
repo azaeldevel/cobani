@@ -8,3 +8,4 @@ gui/obj/
 gui/bin/
 *.old
 *-old
+old/

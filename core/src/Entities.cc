@@ -2,7 +2,7 @@
 
 #include <gl/gl.h>
 
-#include "Entities.hh"
+#include "entities.hh"
 
 #ifdef COBANI_DEBUG
     #include <iostream>
