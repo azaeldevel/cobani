@@ -59,9 +59,16 @@ Context::Context( Uint32 flags )
     {
         throw core::Exception(__FILE__,__LINE__,"Falló la inicialización de la venta.");
     }
+    if ( TTF_Init() < 0 )
+    {
+        std::string msg = "Error initializing SDL_ttf: ";
+        msg += TTF_GetError();
+        msg +=  "\n";
+        throw core::Exception(__FILE__,__LINE__,msg);
+    }
     if ( SDL_CreateWindowAndRenderer( 640, 480, SDL_WINDOW_SHOWN, &m_window, &m_renderer ) != 0 )
     {
-        throw core::Exception(__FILE__,__LINE__,"Renderizacion fallída.");
+        throw core::Exception(__FILE__,__LINE__,"Renderización fallída.");
     }
 }
 
@@ -73,31 +80,47 @@ Context::~Context()
 }
 void Context::displayLoading()
 {
-    /*TTF_Font* Sans = TTF_OpenFont("Sans.ttf", 24); //this opens a font style and sets a size
+    TTF_Font* font;
 
-    SDL_Color White = {255, 255, 255};  // this is the color in rgb format, maxing out all would give you the color white, and it will be your text's color
+    font = TTF_OpenFont("DejaVuSans.ttf", 60);
+    if ( !font )
+    {
+        std::string msg = "Failed to load font : ";
+        msg += TTF_GetError();
+        msg +=  "\n";
+        throw core::Exception(__FILE__,__LINE__,msg);
+    }
+    SDL_Surface* text;
+    // Set color to black
+    SDL_Color color = { 0, 0, 0 };
 
-    SDL_Surface* surfaceMessage = TTF_RenderText_Solid(Sans, "put your text here", White); // as TTF_RenderText_Solid could only be used on SDL_Surface then you have to create the surface first
-
-    SDL_Texture* Message = SDL_CreateTextureFromSurface(m_renderer, surfaceMessage); //now you can convert it into a texture
-
-    SDL_Rect Message_rect; //create a rect
-    Message_rect.x = 0;  //controls the rect's x coordinate
-    Message_rect.y = 0; // controls the rect's y coordinte
-    Message_rect.w = 100; // controls the width of the rect
-    Message_rect.h = 100; // controls the height of the rect
-
-    //Mind you that (0,0) is on the top left of the window/screen, think a rect as the text's box, that way it would be very simple to understand
-
-    //Now since it's a texture, you have to put RenderCopy in your game loop area, the area where the whole code executes
-
-    SDL_RenderCopy(m_renderer, Message, NULL, &Message_rect); //you put the renderer's name first, the Message, the crop size(you can ignore this if you don't want to dabble with cropping), and the rect which is the size and coordinate of your texture
-
-    //Don't forget to free your surface and texture
-    SDL_FreeSurface(surfaceMessage);
-    SDL_DestroyTexture(Message);*/
+    text = TTF_RenderText_Solid( font, "Cargando componentes!...", color );
+    if ( !text )
+    {
+        std::string msg = "Failed to render text:";
+        msg += TTF_GetError();
+        msg +=  "\n";
+    }
+    SDL_Texture* text_texture;
+    text_texture = SDL_CreateTextureFromSurface( m_renderer, text );
+    SDL_Rect dest = { 0, text->h / 2, text->w / 2, text->h /3 };
+    SDL_RenderCopy( m_renderer, text_texture, NULL, &dest );
+    SDL_DestroyTexture( text_texture );
+    SDL_FreeSurface( text );
 }
-void Context::draw()
+
+//getter
+SDL_Renderer* Context::getRenderer()
+{
+    return m_renderer;
+}
+
+void Context::displayPregress2()
+{
+    SDL_SetRenderDrawColor( m_renderer, 0, 0, 0, 255 );
+    SDL_RenderClear( m_renderer );
+}
+void Context::displayPregress()
 {
     // Clear the window with a black background
     SDL_SetRenderDrawColor( m_renderer, 0, 0, 0, 255 );

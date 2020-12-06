@@ -9,3 +9,7 @@ gui/bin/
 *.old
 *-old
 old/
+core/*.depend
+gui/*.depend
+core/*.layout
+gui/*.layout

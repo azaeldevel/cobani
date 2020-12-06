@@ -14,11 +14,17 @@ private:
     SDL_Window * m_window;
     SDL_Renderer * m_renderer;
 
+    //funciones
+    void displayLoading();
 public:
     Context( Uint32 flags = 0 );
     virtual ~Context();
-    void draw();
-    void displayLoading();
+
+    //
+    SDL_Renderer* getRenderer();
+    //funciones
+    void displayPregress();
+    void displayPregress2();
 };
 
 class DLL_SPEC Community : public Context
@@ -33,6 +39,9 @@ class DLL_SPEC FirstPerson : public Context
 public:
     FirstPerson( Uint32 flags = 0 );
     virtual ~FirstPerson();
+
+    //funciones
+
 };
 
 class DLL_SPEC Room : public Context

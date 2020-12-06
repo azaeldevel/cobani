@@ -2,18 +2,30 @@
 <CodeBlocks_project_file>
 	<FileVersion major="1" minor="6" />
 	<Project>
-		<Option title="core" />
+		<Option title="cobani-core" />
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
 			<Target title="Debug">
-				<Option output="bin/Debug/core" prefix_auto="1" extension_auto="1" />
+				<Option output="bin/Debug/libcobani-core" imp_lib="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).a" def_file="$(TARGET_OUTPUT_DIR)$(TARGET_OUTPUT_BASENAME).def" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="3" />
 				<Option compiler="gcc" />
+				<Option createDefFile="1" />
+				<Option createStaticLib="1" />
 				<Compiler>
 					<Add option="-g" />
+					<Add option="-DBUILDING_DLL" />
+					<Add option="-DWINDOWS_MINGW" />
+					<Add option="-DCOBANI_DEBUG" />
 				</Compiler>
+				<Linker>
+					<Add library="C:/msys64/mingw64/bin/opengl32.dll" />
+					<Add library="C:/msys64/mingw64/lib/libfreetype.a" />
+					<Add library="C:/msys64/mingw64/lib/libfreetype.dll.a" />
+					<Add library="C:/msys64/mingw64/bin/SDL2.dll" />
+					<Add library="C:/msys64/mingw64/bin/SDL2_ttf.dll" />
+				</Linker>
 			</Target>
 			<Target title="Release">
 				<Option output="bin/Release/core" prefix_auto="1" extension_auto="1" />
@@ -45,7 +57,13 @@
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
-		<Unit filename="main.cpp" />
+		<Unit filename="src/Dust.cc" />
+		<Unit filename="src/Dust.hh" />
+		<Unit filename="src/contexts.cc" />
+		<Unit filename="src/contexts.hh" />
+		<Unit filename="src/entities.cc" />
+		<Unit filename="src/entities.hh" />
+		<Unit filename="src/worlds.hh" />
 		<Extensions />
 	</Project>
 </CodeBlocks_project_file>
