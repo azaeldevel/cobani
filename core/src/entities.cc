@@ -1,6 +1,6 @@
 
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 
 #include "entities.hh"
 
@@ -127,7 +127,7 @@ namespace cobani::core
     {
         if(fabs(d.lengthTo(Point::O) - 1.0) >= COBANI_EPSILON)
         {
-            std::string msg = "El de dirección deve ser de longitud unitaria.'";
+            std::string msg = "El de direccion deve ser de longitud unitaria.'";
             msg = msg + std::to_string(d.lengthTo(Point::O)) + "'";
             throw Exception(__FILE__,__LINE__,msg);
         }
@@ -144,7 +144,7 @@ namespace cobani::core
     {
         if(fabs(d.lengthTo(Point::O) - 1.0) >= COBANI_EPSILON)
         {
-            std::string msg = "El de dirección deve ser de longitud unitaria.'";
+            std::string msg = "El de direccion deve ser de longitud unitaria.'";
             msg = msg + std::to_string(d.lengthTo(Point::O)) + "'";
             throw Exception(__FILE__,__LINE__,msg);
         }

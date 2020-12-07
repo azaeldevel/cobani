@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<CodeBlocks_project_file>
+	<FileVersion major="1" minor="6" />
+	<Project>
+		<Option title="cobani-gui" />
+		<Option pch_mode="2" />
+		<Option compiler="gcc" />
+		<Build>
+			<Target title="Debug-firtsperson">
+				<Option output="bin/Debug/gui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Debug/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-g" />
+					<Add directory="../core/src" />
+				</Compiler>
+				<Linker>
+					<Add option="-lcobani-core" />
+					<Add directory="../core/bin/Debug" />
+				</Linker>
+				<ExtraCommands>
+					<Add before="cp ../core/$(TARGET_OUTPUT_DIR)libcobani-core.so $(TARGET_OUTPUT_DIR)" />
+				</ExtraCommands>
+			</Target>
+			<Target title="Release-firtsperson">
+				<Option output="bin/Release/gui" prefix_auto="1" extension_auto="1" />
+				<Option object_output="obj/Release/" />
+				<Option type="0" />
+				<Option compiler="gcc" />
+				<Compiler>
+					<Add option="-O2" />
+				</Compiler>
+				<Linker>
+					<Add option="-s" />
+				</Linker>
+			</Target>
+		</Build>
+		<Compiler>
+			<Add option="`sdl2-config --cflags`" />
+			<Add option="-Wall" />
+		</Compiler>
+		<Linker>
+			<Add option="`sdl2-config --libs`" />
+		</Linker>
+		<Unit filename="src/Community.cc" />
+		<Unit filename="src/Community.hh" />
+		<Unit filename="src/FirstPerons.cc" />
+		<Unit filename="src/FirstPerons.hh" />
+		<Unit filename="src/main-firstperson.cc" />
+		<Extensions>
+			<lib_finder>
+				<lib name="opengl" />
+				<lib name="SDL2_ttf" />
+				<lib name="sdl2" />
+			</lib_finder>
+		</Extensions>
+	</Project>
+</CodeBlocks_project_file>

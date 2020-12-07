@@ -1,6 +1,10 @@
 #ifndef CONTEXTS_HH
 #define CONTEXTS_HH
 
+#include <SDL2/SDL.h>
+#include <SDL2/SDL_ttf.h>
+
+
 #include "entities.hh"
 
 

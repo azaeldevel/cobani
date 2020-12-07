@@ -1,5 +1,5 @@
 
-#include <gl/gl.h>
+#include <GL/gl.h>
 #include <gmp.h>
 
 

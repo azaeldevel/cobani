@@ -55,9 +55,9 @@ FirstPerson::~FirstPerson()
 
 Context::Context( Uint32 flags )
 {
-    if ( SDL_Init( flags ) != 0 )
+    if ( SDL_Init( SDL_INIT_EVERYTHING ) != 0 )
     {
-        throw core::Exception(__FILE__,__LINE__,"Falló la inicialización de la venta.");
+        throw core::Exception(__FILE__,__LINE__,"Fallo la inicializacion de la venta.");
     }
     if ( TTF_Init() < 0 )
     {
@@ -68,7 +68,7 @@ Context::Context( Uint32 flags )
     }
     if ( SDL_CreateWindowAndRenderer( 640, 480, SDL_WINDOW_SHOWN, &m_window, &m_renderer ) != 0 )
     {
-        throw core::Exception(__FILE__,__LINE__,"Renderización fallída.");
+        throw core::Exception(__FILE__,__LINE__,"Renderizacion fallida.");
     }
 }
 
@@ -82,7 +82,11 @@ void Context::displayLoading()
 {
     TTF_Font* font;
 
+    #ifdef WINDWOWS_MINGW
     font = TTF_OpenFont("DejaVuSans.ttf", 60);
+    #else
+    font = TTF_OpenFont("DejaVuSans.ttf", 60);///usr/share/fonts/TTF/
+    #endif
     if ( !font )
     {
         std::string msg = "Failed to load font : ";

@@ -21,8 +21,7 @@
 // 0 Subatomo,5 atomo, 10 obejtos
 #define COBANI_LEVEL 10
 
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_ttf.h>
+
 
 #include <math.h>
 #include <string>

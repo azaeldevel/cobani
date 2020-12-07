@@ -1,7 +1,7 @@
 #ifndef DUST_HH
 #define DUST_HH
 
-#include "Entities.hh"
+#include "entities.hh"
 
 namespace cobani::core
 {
