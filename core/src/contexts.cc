@@ -85,7 +85,7 @@ void Context::displayLoading()
     #if defined WINDOWS_MINGW
     font = TTF_OpenFont("/msys64/mingw64/share/fonts/TTF/DejaVuSans.ttf", 60);
     #elif defined LINUX
-    font = TTF_OpenFont("DejaVuSans.ttf", 60);///usr/share/fonts/TTF/
+    font = TTF_OpenFont("/usr/share/fonts/TTF/DejaVuSans.ttf", 60);
     #endif
     if ( !font )
     {
@@ -111,6 +111,7 @@ void Context::displayLoading()
     SDL_RenderCopy( m_renderer, text_texture, NULL, &dest );
     SDL_DestroyTexture( text_texture );
     SDL_FreeSurface( text );
+    TTF_CloseFont(font);
 }
 
 //getter

@@ -43,8 +43,6 @@
 		<Linker>
 			<Add option="`sdl2-config --libs`" />
 		</Linker>
-		<Unit filename="src/Community.cc" />
-		<Unit filename="src/Community.hh" />
 		<Unit filename="src/FirstPerons.cc" />
 		<Unit filename="src/FirstPerons.hh" />
 		<Unit filename="src/main-firstperson.cc" />
