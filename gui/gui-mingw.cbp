@@ -6,28 +6,26 @@
 		<Option pch_mode="2" />
 		<Option compiler="gcc" />
 		<Build>
-			<Target title="Debug-FirstPerosn">
-				<Option output="bin/Debug/cobani-firstperson" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin/Debug" />
+			<Target title="Debug-firstperosn">
+				<Option output="bin/Debug/gui" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Debug/" />
-				<Option type="1" />
+				<Option type="0" />
 				<Option compiler="gcc" />
 				<Compiler>
 					<Add option="-g" />
 					<Add option="-DWINDOWS_MINGW" />
-					<Add option="-DCOBANI_DEBUG" />
 					<Add directory="../core/src" />
 				</Compiler>
 				<Linker>
-					<Add library="../core/bin/Debug/libcobani-core.dll" />
+					<Add option="-lcobani-core" />
+					<Add directory="../core/bin/Debug" />
 				</Linker>
 				<ExtraCommands>
-					<Add before="cmd /c cp ..\core\$(TARGET_OUTPUT_DIR)libcobani-core.dll $(TARGET_OUTPUT_DIR)" />
-					<Add before="cmd /c cp C:\msys64\mingw64\share\fonts\TTF\DejaVuSans.ttf $(TARGET_OUTPUT_DIR)" />
+					<Add before="cmd /c copy ..\core\$(TARGET_OUTPUT_DIR)libcobani-core.dll $(TARGET_OUTPUT_DIR)" />
 				</ExtraCommands>
 			</Target>
-			<Target title="Release-FirstPerson">
-				<Option output="bin/Release/gui" prefix_auto="1" extension_auto="1" />
+			<Target title="Release-firstperosn">
+				<Option output="bin/Release/firstperosn" prefix_auto="1" extension_auto="1" />
 				<Option object_output="obj/Release/" />
 				<Option type="0" />
 				<Option compiler="gcc" />
@@ -38,30 +36,10 @@
 					<Add option="-s" />
 				</Linker>
 			</Target>
-			<Target title="Debug-Community">
-				<Option output="bin/Debug/cobani-community" prefix_auto="1" extension_auto="1" />
-				<Option working_dir="bin/Debug" />
-				<Option object_output="obj/Debug/" />
-				<Option type="1" />
-				<Option compiler="gcc" />
-				<Compiler>
-					<Add option="-g" />
-					<Add option="-DWINDOWS_MINGW" />
-					<Add option="-DCOBANI_DEBUG" />
-					<Add directory="../core/src" />
-				</Compiler>
-				<Linker>
-					<Add library="../core/bin/Debug/libcobani-core.dll" />
-				</Linker>
-				<ExtraCommands>
-					<Add before="cmd /c cp ..\core\$(TARGET_OUTPUT_DIR)libcobani-core.dll $(TARGET_OUTPUT_DIR)" />
-					<Add before="cmd /c cp C:\msys64\mingw64\share\fonts\TTF\DejaVuSans.ttf $(TARGET_OUTPUT_DIR)" />
-				</ExtraCommands>
-			</Target>
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/msys64/mingw64/include" />
+			<Add directory="$(#sdl2.include)/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -71,26 +49,16 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add directory="C:/msys64/mingw64/lib" />
+			<Add directory="$(#sdl2.lib)" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
 		</ExtraCommands>
-		<Unit filename="src/Community.cc">
-			<Option target="Debug-Community" />
-		</Unit>
-		<Unit filename="src/Community.hh">
-			<Option target="Debug-Community" />
-		</Unit>
 		<Unit filename="src/FirstPerons.cc" />
 		<Unit filename="src/FirstPerons.hh" />
-		<Unit filename="src/main-community.cc">
-			<Option target="Debug-Community" />
-		</Unit>
-		<Unit filename="src/main-firstperson.cc">
-			<Option target="Debug-FirstPerosn" />
-			<Option target="Release-FirstPerson" />
-		</Unit>
-		<Extensions />
+		<Unit filename="src/main-firstperson.cc" />
+		<Extensions>
+			<lib_finder disable_auto="1" />
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

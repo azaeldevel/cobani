@@ -82,9 +82,9 @@ void Context::displayLoading()
 {
     TTF_Font* font;
 
-    #ifdef WINDWOWS_MINGW
-    font = TTF_OpenFont("DejaVuSans.ttf", 60);
-    #else
+    #if defined WINDOWS_MINGW
+    font = TTF_OpenFont("/msys64/mingw64/share/fonts/TTF/DejaVuSans.ttf", 60);
+    #elif defined LINUX
     font = TTF_OpenFont("DejaVuSans.ttf", 60);///usr/share/fonts/TTF/
     #endif
     if ( !font )

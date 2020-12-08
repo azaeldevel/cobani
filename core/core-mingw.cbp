@@ -14,17 +14,13 @@
 				<Option createDefFile="1" />
 				<Option createStaticLib="1" />
 				<Compiler>
+					<Add option="-std=c++20" />
 					<Add option="-g" />
-					<Add option="-DBUILDING_DLL" />
 					<Add option="-DWINDOWS_MINGW" />
-					<Add option="-DCOBANI_DEBUG" />
+					<Add option="-DBUILDING_DLL" />
 				</Compiler>
 				<Linker>
-					<Add library="C:/msys64/mingw64/bin/opengl32.dll" />
-					<Add library="C:/msys64/mingw64/lib/libfreetype.a" />
-					<Add library="C:/msys64/mingw64/lib/libfreetype.dll.a" />
-					<Add library="C:/msys64/mingw64/bin/SDL2.dll" />
-					<Add library="C:/msys64/mingw64/bin/SDL2_ttf.dll" />
+					<Add option="-lopengl32" />
 				</Linker>
 			</Target>
 			<Target title="Release">
@@ -42,7 +38,7 @@
 		</Build>
 		<Compiler>
 			<Add option="-Wall" />
-			<Add directory="C:/msys64/mingw64/include" />
+			<Add directory="$(#sdl2.include)/SDL2" />
 		</Compiler>
 		<Linker>
 			<Add library="mingw32" />
@@ -52,7 +48,7 @@
 			<Add library="gdi32" />
 			<Add library="winmm" />
 			<Add library="dxguid" />
-			<Add directory="C:/msys64/mingw64/lib" />
+			<Add directory="$(#sdl2.lib)" />
 		</Linker>
 		<ExtraCommands>
 			<Add after="XCOPY $(#sdl2)\bin\*.dll $(TARGET_OUTPUT_DIR) /D /Y" />
@@ -63,7 +59,11 @@
 		<Unit filename="src/contexts.hh" />
 		<Unit filename="src/entities.cc" />
 		<Unit filename="src/entities.hh" />
-		<Unit filename="src/worlds.hh" />
-		<Extensions />
+		<Extensions>
+			<lib_finder>
+				<lib name="/sdl2" />
+				<lib name="/SDL2_ttf" />
+			</lib_finder>
+		</Extensions>
 	</Project>
 </CodeBlocks_project_file>

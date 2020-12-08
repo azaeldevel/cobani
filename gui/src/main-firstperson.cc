@@ -14,9 +14,7 @@ int main( int argc, char * argv[] )
     }
     catch(const cobani::core::Exception& ex)
     {
-        std::string msg = "Error while initializing SDL:  ";
-        msg += ex.what();
-        msg += "\n";
+        std::string msg = ex.what();
         SDL_ShowSimpleMessageBox(SDL_MESSAGEBOX_ERROR,"Error detectado.", msg.c_str(),NULL);
     }
     catch(const std::exception& ex)
